@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react"
 import { supabase } from "../services/supabase"
-import "./cursos.css"
+import "./Cursos.css"
 
 export default function Cursos({ usuario,setTela,sair }){
 

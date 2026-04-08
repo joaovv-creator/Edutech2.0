@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { supabase } from "../services/supabase"
-import "./admin.css"
+import "./Admin.css"
 
 export default function Admin({ usuario,setTela,sair }){
 
