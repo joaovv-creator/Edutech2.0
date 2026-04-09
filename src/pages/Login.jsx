@@ -61,13 +61,18 @@ onChange={(e)=>setSenha(e.target.value)}
 Entrar
 </button>
 
-<p>
+<p className="link-cadastro">
 
-Não tem conta?
+Não tem conta? 
 
-<span onClick={()=>mudarTela("cadastro")}>
- Criar conta
-</span>
+<a
+className="cadastro-link"
+onClick={() => mudarTela("cadastro")}
+>
+
+Criar conta
+
+</a>
 
 </p>
 

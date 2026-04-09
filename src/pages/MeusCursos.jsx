@@ -2,23 +2,30 @@ import { useEffect,useState } from "react"
 import { supabase } from "../services/supabase"
 import "./cursos.css"
 
-export default function Cursos({ usuario,setTela,setCursoSelecionado,sair }){
+export default function MeusCursos({ usuario,setTela,sair }){
 
 const [cursos,setCursos] = useState([])
 
 useEffect(()=>{
 
-buscarCursos()
+buscarMeusCursos()
 
 },[])
 
-async function buscarCursos(){
+async function buscarMeusCursos(){
 
 const { data } = await supabase
-.from("cursos")
-.select("*")
+.from("matriculas")
+.select("cursos(*)")
+.eq("usuario_id",usuario.id)
 
-setCursos(data)
+if(data){
+
+const lista = data.map(item => item.cursos)
+
+setCursos(lista)
+
+}
 
 }
 
@@ -52,10 +59,11 @@ Admin
 <button onClick={sair}>
 Sair
 </button>
+
 </div>
 
 <span>
-Bem-vindo(a), {usuario.nome}
+Bem-vindo, {usuario.nome}
 </span>
 
 
@@ -66,6 +74,14 @@ Bem-vindo(a), {usuario.nome}
 
 
 <div className="grid">
+
+{cursos.length===0 &&(
+
+<h2 style={{marginLeft:"40px"}}>
+Você ainda não está matriculado em nenhum curso
+</h2>
+
+)}
 
 {cursos.map(curso=> (
 
@@ -85,18 +101,8 @@ Professor: {curso.professor}
 Carga: {curso.carga_horaria}
 </p>
 
-<button
-className="btn-curso"
-onClick={()=>{
-
-setCursoSelecionado(curso)
-setTela("matricula")
-
-}}
->
-
-Entrar no curso
-
+<button className="btn-curso">
+Acessar curso
 </button>
 
 </div>

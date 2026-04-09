@@ -3,11 +3,14 @@ import Login from "./pages/Login"
 import Cadastro from "./pages/Cadastro"
 import Cursos from "./pages/Cursos"
 import Admin from "./pages/Admin"
+import Matricula from "./pages/Matricula"
+import MeusCursos from "./pages/MeusCursos"
 
 function App(){
 
 const [tela,setTela] = useState("login")
 const [usuario,setUsuario] = useState(null)
+const [cursoSelecionado,setCursoSelecionado] = useState(null)
 
 function sair(){
 
@@ -30,13 +33,42 @@ return <Cadastro mudarTela={setTela}/>
 
 if(tela==="cursos"){
 
-return <Cursos usuario={usuario} setTela={setTela} sair={sair}/>
+return <Cursos
+usuario={usuario}
+setTela={setTela}
+setCursoSelecionado={setCursoSelecionado}
+sair={sair}
+/>
+
+}
+
+if(tela==="meusCursos"){
+
+return <MeusCursos
+usuario={usuario}
+setTela={setTela}
+sair={sair}
+/>
 
 }
 
 if(tela==="admin"){
 
-return <Admin usuario={usuario} setTela={setTela} sair={sair}/>
+return <Admin
+usuario={usuario}
+setTela={setTela}
+sair={sair}
+/>
+
+}
+
+if(tela==="matricula"){
+
+return <Matricula
+usuario={usuario}
+curso={cursoSelecionado}
+setTela={setTela}
+/>
 
 }
 

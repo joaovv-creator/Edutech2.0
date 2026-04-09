@@ -1,7 +1,7 @@
 .navbar{
 
 display:flex;
-justify-content:space-between;
+justify-content:center;
 align-items:center;
 padding:20px 40px;
 background:white;
@@ -22,6 +22,7 @@ color:#4f46e5;
 display:flex;
 align-items:center;
 gap:20px;
+justify-content: center;
 
 }
 
@@ -35,6 +36,8 @@ border-radius:8px;
 
 }
 
+/* GRID */
+
 .grid{
 
 display:grid;
@@ -44,6 +47,8 @@ padding:40px;
 
 }
 
+/* CARD */
+
 .card{
 
 background:white;
@@ -51,24 +56,219 @@ padding:20px;
 border-radius:15px;
 box-shadow:0px 6px 20px rgba(0,0,0,0.08);
 
-}
+display:flex;
+flex-direction:column;
+justify-content:space-between;
 
-.card-img{
-
-width:100%;
-height:160px;
-object-fit:cover;
-border-radius:10px;
+/* min-height:420px; */
+max-height: 50px;
 
 }
+
+/* IMAGEM */
+
+
+
+/* BOTÃO ALINHADO */
 
 .btn-curso{
 
-margin-top:10px;
+margin-top:auto;
 padding:12px;
 background:#4f46e5;
 color:white;
 border:none;
 border-radius:8px;
+width:100%;
+
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff; /* fundo branco */
+  padding: 15px 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.nav-links button:hover {
+  background-color: #0056b3;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.user-info span {
+  font-weight: 500;
+  color: #333;
+}
+
+.user-info button {
+  background-color: #dc3545;
+}
+
+.user-info button:hover {
+  background-color: #a71d2a;
+}
+body{
+background:#f4f6f9;
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:white;
+
+padding:15px 40px;
+
+box-shadow:0px 3px 8px rgba(0,0,0,0.08);
+
+}
+
+.logo{
+
+font-size:22px;
+font-weight:bold;
+color:#333;
+
+}
+
+.nav-links{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+/* BOTÕES PADRÃO */
+
+.nav-btn{
+
+background:#007bff;
+color:white;
+
+border:none;
+
+padding:8px 16px;
+
+border-radius:6px;
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:0.2s;
+
+}
+
+.nav-btn:hover{
+
+background:#0056b3;
+
+}
+
+/* TEXTO DO USUÁRIO */
+
+.user-text{
+
+font-weight:500;
+color:#333;
+
+margin-left:10px;
+
+}
+
+/* BOTÃO SAIR */
+
+.logout-btn{
+
+background:#dc3545;
+color:white;
+
+border:none;
+
+padding:8px 16px;
+
+border-radius:6px;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+.logout-btn:hover{
+
+background:#a71d2a;
+
+}
+.link-cadastro{
+
+margin-top:15px;
+
+font-size:15px;
+
+color:#333;
+
+}
+
+.cadastro-link{
+
+color:#007bff;
+
+cursor:pointer;
+
+margin-left:5px;
+
+font-weight:bold;
+
+text-decoration:none;
+
+transition:0.2s;
+
+}
+
+.cadastro-link:hover{
+
+text-decoration:underline;
+
+color:#0056b3;
 
 }
