@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { supabase } from "../services/supabase"
+import Swal from "sweetalert2"
 
 export default function Cadastro({ setUsuario }) {
 
@@ -11,6 +12,17 @@ const [cidade,setCidade]=useState("")
 
 async function cadastrar(){
 
+if(!nome || !email || !senha){
+
+Swal.fire({
+icon:"warning",
+title:"Preencha todos os campos"
+})
+
+return
+
+}
+
 const { error } = await supabase
 .from("usuarios")
 .insert([
@@ -18,25 +30,27 @@ const { error } = await supabase
 nome,
 email,
 senha,
-telefone,
-cidade
+admin:false
 }
 ])
 
 if(error){
 
-alert("Usuário já existe ou erro no cadastro")
-
-}else{
-
-setUsuario({
-nome,
-email,
-telefone,
-cidade
+Swal.fire({
+icon:"error",
+title:"Erro ao cadastrar usuário"
 })
 
+return
+
 }
+
+Swal.fire({
+icon:"success",
+title:"Cadastro realizado com sucesso!"
+})
+
+mudarTela("login")
 
 }
 

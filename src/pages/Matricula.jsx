@@ -1,4 +1,5 @@
 import { supabase } from "../services/supabase"
+import Swal from "sweetalert2"
 
 export default function Matricula({ usuario,curso,setTela }){
 
@@ -6,24 +7,30 @@ async function matricular(){
 
 const { error } = await supabase
 .from("matriculas")
-.insert([{
-
-usuario_id: usuario.id,
-curso_id: curso.id
-
-}])
+.insert([
+{
+usuario_id:usuario.id,
+curso_id:curso.id
+}
+])
 
 if(error){
 
-alert("Erro ao matricular")
+Swal.fire({
+icon:"error",
+title:"Erro ao realizar matrícula"
+})
 
-}else{
-
-alert("Matriculado com sucesso!")
-
-setTela("cursos")
+return
 
 }
+
+Swal.fire({
+icon:"success",
+title:"Matrícula realizada com sucesso!"
+})
+
+setTela("meusCursos")
 
 }
 

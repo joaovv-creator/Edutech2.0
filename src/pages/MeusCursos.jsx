@@ -41,30 +41,26 @@ EduTech Cursos Online
 
 <div className="nav-links">
 
-<button onClick={()=>setTela("cursos")}>
+<a className="nav-link" onClick={()=>setTela("cursos")}>
 Cursos
-</button>
+</a>
 
-<button onClick={()=>setTela("meusCursos")}>
+<a className="nav-link" onClick={()=>setTela("meusCursos")}>
 Meus Cursos
-</button>
+</a>
 
-{usuario.admin &&(
+{usuario.tipo_usuario === "admin" && (
 
-<button onClick={()=>setTela("admin")}>
+<a className="nav-link" onClick={()=>setTela("admin")}>
 Admin
-</button>
+</a>
 
-)}
-<button onClick={sair}>
+)}</div>
+<a className="logout-link" onClick={sair}>
 Sair
-</button>
+</a>
 
-</div>
 
-<span>
-Bem-vindo, {usuario.nome}
-</span>
 
 
 

@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { supabase } from "../services/supabase"
+import Swal from "sweetalert2"
+
 
 export default function Login({ mudarTela,setUsuario }){
 
@@ -7,6 +9,17 @@ const [email,setEmail] = useState("")
 const [senha,setSenha] = useState("")
 
 async function logar(){
+
+if(!email || !senha){
+
+Swal.fire({
+icon:"warning",
+title:"Preencha todos os campos"
+})
+
+return
+
+}
 
 const { data,error } = await supabase
 .from("usuarios")
@@ -17,14 +30,25 @@ const { data,error } = await supabase
 
 if(error){
 
-alert("Email ou senha incorretos")
+Swal.fire({
+icon:"error",
+title:"Email ou senha inválidos"
+})
+
 return
 
 }
 
 setUsuario(data)
 
-if(data.admin){
+Swal.fire({
+icon:"success",
+title:"Login realizado com sucesso!",
+timer:1500,
+showConfirmButton:false
+})
+
+if(data.tipo_usuario === "admin"){
 
 mudarTela("admin")
 
@@ -51,8 +75,8 @@ onChange={(e)=>setEmail(e.target.value)}
 />
 
 <input
-type="password"
 placeholder="Senha"
+type="password"
 value={senha}
 onChange={(e)=>setSenha(e.target.value)}
 />
@@ -63,11 +87,11 @@ Entrar
 
 <p className="link-cadastro">
 
-Não tem conta? 
+Não tem conta?
 
 <a
 className="cadastro-link"
-onClick={() => mudarTela("cadastro")}
+onClick={()=>mudarTela("cadastro")}
 >
 
 Criar conta

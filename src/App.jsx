@@ -70,7 +70,39 @@ curso={cursoSelecionado}
 setTela={setTela}
 />
 
+
 }
+<footer className="footer">
+
+  <div className="footer-container">
+
+    <div className="footer-logo">
+      EduTech Cursos Online
+    </div>
+
+
+    <div className="footer-links">
+
+      <a href="#">Cursos</a>
+
+      <a href="#">Meus Cursos</a>
+
+      <a href="#">Contato</a>
+
+      <a href="#">Sobre</a>
+
+    </div>
+
+
+    <div className="footer-copy">
+
+      © {new Date().getFullYear()} EduTech - Todos os direitos reservados
+
+    </div>
+
+  </div>
+
+</footer>
 
 }
 
