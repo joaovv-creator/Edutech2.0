@@ -1,9 +1,21 @@
 import { supabase } from "../services/supabase"
 import Swal from "sweetalert2"
+import "./Matricula.css"
 
 export default function Matricula({ usuario,curso,setTela }){
 
 async function matricular(){
+    const { data: existente } = await supabase
+    .from("matriculas")
+    .select("*")
+    .eq("usuario_id", usuario.id)
+    .eq("curso_id", cursoId)
+    .single();
+
+  if (existente) {
+    alert("Você já está inscrito neste curso!");
+    return;
+  }
 
 const { error } = await supabase
 .from("matriculas")
@@ -46,6 +58,7 @@ return(
 
 <p>Aluno: {usuario.nome}</p>
 
+<div className="confirmar-cancelar-button">
 <button onClick={matricular}>
 Confirmar matrícula
 </button>
@@ -53,6 +66,7 @@ Confirmar matrícula
 <button onClick={()=>setTela("cursos")}>
 Cancelar
 </button>
+</div>
 
 </div>
 
